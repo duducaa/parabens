@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @charset "UTF-8";
+
+        @keyframes walkFront {
+            0% {
+                top: -10%;
+                left: -20%;
+            }
+            25% {
+                top: -10%;
+                left: 80%;
+            }
+            50% {
+                top: 90%;
+                left: 80%;
+            }
+            75% {
+                top: 90%;
+                left: -20%;
+            }
+            100% {
+                top: -10%;
+                left: -20%;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            25% {
+                transform: rotateZ(90deg);
+            }
+            50% {
+                transform: rotateZ(180deg);
+            }
+            75% {
+                transform: rotateZ(270deg);
+            }
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            100% {
+                transform: scale(1.5);
+            }
+        }
+
+        body {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            height: 70vh;
+            width: 70vw;
+            border: 1px solid black;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .img-div {
+            position: absolute;
+            top: 90%;
+            left: 80%;
+            animation: 2.5s none 0s infinite linear rotate,
+                    5s none 0s infinite linear walkFront;
+        }
+
+        .symbol {
+            width: 30vw;
+            position: absolute;
+            top: 15%;
+            left: 30%;
+            animation: 0.2s none 0s infinite alternate pulse;
+        }
+
+        h1 {
+            align-self: center;
+        }
+
+        .img-div img {
+            height: 20vw;
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="symbol" src="./png-clipart-percy-jackson-the-olympians-t-shirt-the-mark-of-athena-percy-jackson-s-greek-gods-t-shirt.png" alt="">
+        <h1>PARABÉNS <span class="apelido"></span></h1>
+        <div class="img-div">
+            <img src="./bmo-surfing.png" alt="">
+        </div>
+    </div>
+    
+    <script type="module">
+        const apelidos = [
+            "ALFIE",
+            "ALF",
+            "MALAFAIA",
+            "ALFAFA",
+            "ALFACE",
+            "ALFAGEM",
+            "FAZEDOR DE JOGUINHOS"
+        ]
+
+        let i = 0;
+
+        const apelido = document.querySelector(".apelido");
+        const img = document.querySelector(".img-div");
+        const container = document.querySelector(".container");
+
+        let top, left;
+
+        setInterval(() => {
+            apelido.innerHTML = apelidos[i];
+            i = (i == apelidos.length - 1) ? 0 : i + 1;
+        }, 1000);
+    </script>
+</body>
+</html>
